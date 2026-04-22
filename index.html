@@ -158,7 +158,10 @@
 const prosedurler = {
     /* 1. SÜTUN */
     "#1 FUEL LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Depo Yakıt Düşük.</p><ul><li>Step1.</li><li>Step2.</li></ul></div>`,
-    "#1 FUEL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Basıncı Düşük.</p><ul><li>Bu durumda motor susması mümkündür. Ani kolloktif hareketlerinden kaçının. Motor susmasının yakıt kaçağından daha tehlikeli olduğu durumlarda;
+    "#1 FUEL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Basıncı Düşük.</p><ul><li>
+    Bu durumda motor susması mümkündür. 
+    Ani kolloktif hareketlerinden kaçının. 
+    Motor susmasının yakıt kaçağından daha tehlikeli olduğu durumlarda;
 -FUEL BOOST PUMP - ON
 Eğer durum kritik değilse
 -Etkilenen motorda ENG FUEL SYS - XFD konuma al
@@ -171,10 +174,17 @@ Işık yanmaya devam ediyorsa
     "#1 ENGINE OIL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Yağ Basıncı.</p><ul><li>Step1.</li></ul></div>`,
     "#1 ENGINE OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
     "CHIP #1 ENGINE": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Çapak Algılandı.</p><ul><li>Step1.</li></ul></div>`,
-    "#1 FUEL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Filtresi Bypass.</p><ul><li>Etkilenen motorda ENG FUEL SYS - XFD.</li>Land as soon as practicable
-(ikisi birden giderse Land as soon as possible)<li>.</li></ul></div>`,
+    "#1 FUEL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Filtresi Bypass.</p><ul><li>
+    Etkilenen motorda ENG FUEL SYS - XFD.</li>
+    Land as soon as practicable
+(ikisi birden giderse Land as soon as possible)
+<li>.</li></ul></div>`,
     "#1 ENGINE STARTER": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Marş Durumu.</p><ul><li>Step1.</li></ul></div>`,
-    "#1 PRI SERVO PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Birincil Servo Basıncı.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 PRI SERVO PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Birincil Servo Basıncı.</p><ul><li>
+    SVO OFF switchler ortada olduğu kontrol edilir
+    Işık yanmaya devam ediyorsa
+    Land as soon as possible!
+    </li></ul></div>`,
     "TAIL ROTOR QUADRANT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Kuyruk Rotoru Quadrant Hatası.</p><ul><li>Step1.</li></ul></div>`,
     "MAIN XMSN OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ana Şanzıman Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
     "BOOST SERVO OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> Boost Servo Devre Dışı.</p><ul><li>Step1.</li></ul></div>`,
@@ -192,10 +202,32 @@ Işık yanmaya devam ediyorsa
     "#1 GEN BRG": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Rulman Hatası.</p><ul></ul></div>`,
     "#1 CONV": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Konvertör Hatası.</p><ul><li>Gereksiz DC ekipmanları kapat</li><li>Not: sadece batarya varsa gündüz 22 dakika gece 14 dakika %80 şarjla devam edilebilir.</li><li>Land as soon as possible</li></ul></div>`,
     "AC ESS BUS OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> AC Temel Veri Yolu Kapalı.</p><ul><li>Step1.</li></ul></div>`,
-    "BATT LOW CHARGE": `<div style="text-align:left;"><p><strong>DURUM:</strong> Batarya Düşük Şarj.</p><ul><li>Step1.</li></ul></div>`,
+    "BATT LOW CHARGE": `<div style="text-align:left;"><p><strong>DURUM:</strong> Batarya Düşük Şarj.</p><ul><li>BATTERY şarjı %40 veya daha az!
+    Yerde APU bastıktan sonra ışık gitmezse
+    BATT switch OFF sonra ON(şarj analiz modülünü resetlemek için)
+    Bataryanın şarj olabilmesi 30 dakika sürebilir!
+    Işık havadayken yanarsa:
+    BATTERY switch OFF(batarya kapasitesini korumak için)</li></ul></div>`,
     "GUST LOCK": `<div style="text-align:left;"><p><strong>DURUM:</strong> Gust Lock Engajeli.</p><ul><li>Step1.</li></ul></div>`,
     "#1 OIL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yağ Filtresi Bypass.</p><ul><li>Step1.</li></ul></div>`,
-    "#1 HYD PUMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Hidrolik Pompa Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 HYD PUMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Hidrolik Pompa Hatası.</p><ul><li>TAIL SERVO switch - BACK UP sonra NORMAL
+    Land as soon as practicable
+    (ikisi birden yanarsa)
+    Land as soon as possible!
+    1 HYD PUMP yanarsa ve BACK UP PUMP yanmıyorsa:
+    Kuyruk kontrolü kaybedilebilir!
+    45 Knot altı veya 120 Knot üzeri hızlarda yaw kontrolü kollektifle düzeltilebilir.
+    Ruleli iniş önerilir.
+    #RSVR LOW ve #HYD PUMP ve BACKUP PUMP aynı anda yanarsa:
+    Land as soon as practicable
+    Eğer BACKUP RSVR LOW ışığı da yanarsa
+    SVO OFF switch - 1st STG alınır.
+    Land as soon as possible!
+    Eğer 2# PRI SERVO PRESS ışığı da yanarsa;
+    İniş pozisyonuna ayarla
+    Kumanda girişlerini en az indir
+    Alçalmaya başla!
+    </li></ul></div>`,
     "IRCM INOP": `<div style="text-align:left;"><p><strong>DURUM:</strong> IRCM Devre Dışı.</p><ul><li>Step1.</li></ul></div>`,
     "INT XMSN OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ara Şanzıman Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
     "STABILATOR": `<div style="text-align:left;"><p><strong>DURUM:</strong> Stabilizatör Hatası.</p><ul><li>Step1.</li></ul></div>`,
@@ -203,7 +235,17 @@ Işık yanmaya devam ediyorsa
     "CHIP INT XMSN": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ara Şanzıman Çapak.</p><ul><li>Step1.</li></ul></div>`,
     "CHIP MAIN MDL SUMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ana Modül Sump Çapak.</p><ul><li>Step1.</li></ul></div>`,
     "MR DE-ICE FAULT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ana Rotor Buz Önleme Arızası.</p><ul><li>Step1.</li></ul></div>`,
-    "#1 RSVR LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Rezervuar Seviyesi Düşük.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 RSVR LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Rezervuar Seviyesi Düşük.</p><ul><li>
+    #RSVR LOW ve #HYD PUMP ve BACKUP PUMP aynı anda yanarsa:
+    Land as soon as practicable
+    Eğer BACKUP RSVR LOW ışığı da yanarsa
+    SVO OFF switch - 1st STG alınır.
+    Land as soon as possible!
+    Eğer 2# PRI SERVO PRESS ışığı da yanarsa;
+    İniş pozisyonuna ayarla
+    Kumanda girişlerini en az indir
+    Alçalmaya başla!
+    </li></ul></div>`,
     "#1 ENG INLET ANTI-ICE ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Giriş Buz Önleme Açık.</p><ul><li>Step1.</li></ul></div>`,
     "APU GEN ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> APU Jeneratörü Devrede.</p><ul><li>Step1.</li></ul></div>`,
     "SEARCH LT ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Arama Işığı Açık.</p><ul><li>Step1.</li></ul></div>`,
@@ -218,9 +260,21 @@ Işık yanmaya devam ediyorsa
     "BATTERY FAULT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Batarya Arızası.</p><ul><li>-BAT switch - OFF sonra ON
 BATTERY FAULT ışığı yanarsa
 -2 seferi geçmeyecek şekilde kapat aç
-Işık yanmaya devam ediyorsa BATT switch - OFF.</li></ul></div>`,
+Işık yanmaya devam ediyorsa BATT switch - OFF.
+</li></ul></div>`,
     "#2 OIL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Yağ Filtresi Bypass.</p><ul><li>Step1.</li></ul></div>`,
-    "#2 HYD PUMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Hidrolik Pompa Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 HYD PUMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Hidrolik Pompa Hatası.</p><ul><li>POWER ON RESET switch eş zamanlı basılır ve bırakılır
+    Land as soon as practicable
+    (ikisi birden yanarsa)
+    Land as soon as possible!
+    2 HYD PUMP yanarsa ve BACK UP PUMP yanmıyorsa:
+    Pilot asist servo devre dışı kalır!
+    -Airspeed uygun bir hıza ayarlanır.
+    -BACK UP HYD PUMP switch - ON
+    Eğer BACK UP HYD PUMP ON ışığı yanmazsa;
+    SAS, FPS, BOOST switchleri OFF yapılır.
+    Land as soon as possible!
+    </li></ul></div>`,
     "AUX FUEL": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yedek Yakıt Durumu.</p><ul><li>Step1.</li></ul></div>`,
     "TAIL XMSN OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> Kuyruk Şanzıman Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
     "SAS OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> SAS Kapalı.</p><ul><li>Step1.</li></ul></div>`,
@@ -252,7 +306,20 @@ Işık yanmaya devam ediyorsa
     "CHIP #2 ENGINE": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Çapak Algılandı.</p><ul><li>Step1.</li></ul></div>`,
     "#2 FUEL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Yakıt Filtresi Bypass.</p><ul><li>Step1.</li></ul></div>`,
     "#2 ENGINE STARTER": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Marş Durumu.</p><ul><li>Step1.</li></ul></div>`,
-    "#2 PRI SERVO PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Birincil Servo Basıncı.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 PRI SERVO PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Birincil Servo Basıncı.</p><ul><li>
+    SVO OFF switchler ortada olduğu kontrol edilir
+    Işık yanmaya devam ediyorsa
+    Land as soon as possible!
+    #RSVR LOW ve #HYD PUMP ve BACKUP PUMP aynı anda yanarsa:
+    Land as soon as practicable
+    Eğer BACKUP RSVR LOW ışığı da yanarsa
+    SVO OFF switch - 1st STG alınır.
+    Land as soon as possible!
+    Eğer 2# PRI SERVO PRESS ışığı da yanarsa;
+    İniş pozisyonuna ayarla
+    Kumanda girişlerini en az indir
+    Alçalmaya başla!
+    </li></ul></div>`,
     "#1 TAIL RTR SERVO": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Kuyruk Rotoru Servo Hatası.</p><ul><li>Step1.</li></ul></div>`,
     "APU OIL TEMP HI": `<div style="text-align:left;"><p><strong>DURUM:</strong> APU Yağ Sıcaklığı Yüksek.</p><ul><li>Step1.</li></ul></div>`,
     "TRIM FAIL": `<div style="text-align:left;"><p><strong>DURUM:</strong> Trim Arızası.</p><ul><li>Step1.</li></ul></div>`,
@@ -262,7 +329,17 @@ Işık yanmaya devam ediyorsa
     "ICE DETECTED": `<div style="text-align:left;"><p><strong>DURUM:</strong> Buzlanma Tespit Edildi.</p><ul><li>Step1.</li></ul></div>`,
     "BACK-UP RSVR LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yedek Rezervuar Seviyesi Düşük.</p><ul><li>Step1.</li></ul></div>`,
     "#2 ENG ANTI-ICE ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Buz Önleme Açık.</p><ul><li>Step1.</li></ul></div>`,
-    "BACK-UP PUMP ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yedek Pompa Çalışıyor.</p><ul><li>Step1.</li></ul></div>`,
+    "BACK-UP PUMP ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yedek Pompa Çalışıyor.</p><ul><li>
+    #RSVR LOW ve #HYD PUMP ve BACKUP PUMP aynı anda yanarsa:
+    Land as soon as practicable
+    Eğer BACKUP RSVR LOW ışığı da yanarsa
+    SVO OFF switch - 1st STG alınır.
+    Land as soon as possible!
+    Eğer 2# PRI SERVO PRESS ışığı da yanarsa;
+    İniş pozisyonuna ayarla
+    Kumanda girişlerini en az indir
+    Alçalmaya başla!
+    </li></ul></div>`,
     "#2 TAIL RTR SERVO ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Kuyruk Rotoru Servo Açık.</p><ul><li>Step1.</li></ul></div>`,
     "AUX SRCHLT ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yardımcı Arama Işığı Açık.</p><ul><li>Step1.</li></ul></div>`,
     "HOIST ARMED": `<div style="text-align:left;"><p><strong>DURUM:</strong> Vinç (Hoist) Hazır.</p><ul><li>Step1.</li></ul></div>`,
