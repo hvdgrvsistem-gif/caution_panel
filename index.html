@@ -158,7 +158,16 @@
 const prosedurler = {
     /* 1. SÜTUN */
     "#1 FUEL LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Depo Yakıt Düşük.</p><ul><li>Step1.</li><li>Step2.</li></ul></div>`,
-    "#1 FUEL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Basıncı Düşük.</p><ul><li>Step1.</li><li>Step2.</li></ul></div>`,
+    "#1 FUEL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Basıncı Düşük.</p><ul><li>Bu durumda motor susması mümkündür. Ani kolloktif hareketlerinden kaçının. Motor susmasının yakıt kaçağından daha tehlikeli olduğu durumlarda;
+-FUEL BOOST PUMP - ON
+Eğer durum kritik değilse
+-Etkilenen motorda ENG FUEL SYS - XFD konuma al
+Işık yanmaya devam ediyorsa
+-FUEL BOOST PUMP CONTROL switchleri - ON yap
+Işık yanmaya devam ediyorsa
+-FUEL BOOST PUMP CONTROL switchleri - OFF yap
+-Land as soon as practicable
+</li></ul></div>`,
     "#1 ENGINE OIL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Yağ Basıncı.</p><ul><li>Step1.</li></ul></div>`,
     "#1 ENGINE OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
     "CHIP #1 ENGINE": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Çapak Algılandı.</p><ul><li>Step1.</li></ul></div>`,
@@ -180,8 +189,8 @@ const prosedurler = {
 
     /* 2. SÜTUN */
     "#1 GEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Hatası.</p><ul><li>Etkilenen GENERATOR switch RESET sonra ON.</li><li>Işık yanmaya devam ederse</li><li>Etkilenen GENERATOR switch OFF</li><li>EMER APU START</li><li>1# gen,2#gen,1# conv, 2 conv ve ac ess bus off uyarı ışığı yanıyorsa;</li><li>SAS 1 switch - OFF</li><li>Airspeed 80 Knot veya daha altına indir.</li><li>1# Gen ve 2# Gen switch RESET sonra ON yap.</li><li>Uyarı ışıkları yanmaya devam ederse:</li><li>Generatör switchleri OFF</li><li>EMER APU START</li><li>SAS 1 switch ON</li><li>Land as soon as practicable</li></ul></div>`,
-    "#1 GEN BRG": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Rulman Hatası.</p><ul><li>Step1.</li></ul></div>`,
-    "#1 CONV": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Konvertör Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 GEN BRG": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Rulman Hatası.</p><ul></ul></div>`,
+    "#1 CONV": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Konvertör Hatası.</p><ul><li>Gereksiz DC ekipmanları kapat</li><li>Not: sadece batarya varsa gündüz 22 dakika gece 14 dakika %80 şarjla devam edilebilir.</li><li>Land as soon as possible</li></ul></div>`,
     "AC ESS BUS OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> AC Temel Veri Yolu Kapalı.</p><ul><li>Step1.</li></ul></div>`,
     "BATT LOW CHARGE": `<div style="text-align:left;"><p><strong>DURUM:</strong> Batarya Düşük Şarj.</p><ul><li>Step1.</li></ul></div>`,
     "GUST LOCK": `<div style="text-align:left;"><p><strong>DURUM:</strong> Gust Lock Engajeli.</p><ul><li>Step1.</li></ul></div>`,
@@ -202,11 +211,14 @@ const prosedurler = {
     "PARKING BRAKE ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Park Freni Çekili.</p><ul><li>Step1.</li></ul></div>`,
 
     /* 3. SÜTUN */
-    "#2 GEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Hatası.</p><ul><li>Etkilenen GENERATOR switch RESET sonra ON.</li><li>Işık yanmaya devam ederse</li><li>Etkilenen GENERATOR switch OFF</li><li>EMER APU START</li></ul></div>`,
+    "#2 GEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Hatası.</p><ul><li>Etkilenen GENERATOR switch RESET sonra ON.</li><li>Işık yanmaya devam ederse</li><li>Etkilenen GENERATOR switch OFF</li><li>EMER APU START</li><li>1# gen,2#gen,1# conv, 2 conv ve ac ess bus off uyarı ışığı yanıyorsa;</li><li>SAS 1 switch - OFF</li><li>Airspeed 80 Knot veya daha altına indir.</li><li>1# Gen ve 2# Gen switch RESET sonra ON yap.</li><li>Uyarı ışıkları yanmaya devam ederse:</li><li>Generatör switchleri OFF</li><li>EMER APU START</li><li>SAS 1 switch ON</li><li>Land as soon as practicable</li></ul></div>`,
     "#2 GEN BRG": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Jeneratör Rulman Hatası.</p><ul><li>Step1.</li></ul></div>`,
-    "#2 CONV": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Konvertör Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 CONV": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Konvertör Hatası.</p><ul><li>Gereksiz DC ekipmanları kapat</li><li>Not: sadece batarya varsa gündüz 22 dakika gece 14 dakika %80 şarjla devam edilebilir.</li><li>Land as soon as possible</li></ul></div>`,
     "DC ESS BUS OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> DC Temel Veri Yolu Kapalı.</p><ul><li>Step1.</li></ul></div>`,
-    "BATTERY FAULT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Batarya Arızası.</p><ul><li>Step1.</li></ul></div>`,
+    "BATTERY FAULT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Batarya Arızası.</p><ul><li>-BAT switch - OFF sonra ON
+BATTERY FAULT ışığı yanarsa
+-2 seferi geçmeyecek şekilde kapat aç
+Işık yanmaya devam ediyorsa BATT switch - OFF.</li></ul></div>`,
     "#2 OIL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Yağ Filtresi Bypass.</p><ul><li>Step1.</li></ul></div>`,
     "#2 HYD PUMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Hidrolik Pompa Hatası.</p><ul><li>Step1.</li></ul></div>`,
     "AUX FUEL": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yedek Yakıt Durumu.</p><ul><li>Step1.</li></ul></div>`,
@@ -225,7 +237,16 @@ const prosedurler = {
 
     /* 4. SÜTUN */
     "#2 FUEL LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Depo Yakıt Düşük.</p><ul><li>Step1.</li></ul></div>`,
-    "#2 FUEL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Yakıt Basıncı Düşük.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 FUEL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Basıncı Düşük.</p><ul><li>Bu durumda motor susması mümkündür. Ani kolloktif hareketlerinden kaçının. Motor susmasının yakıt kaçağından daha tehlikeli olduğu durumlarda;
+-FUEL BOOST PUMP - ON
+Eğer durum kritik değilse
+-Etkilenen motorda ENG FUEL SYS - XFD konuma al
+Işık yanmaya devam ediyorsa
+-FUEL BOOST PUMP CONTROL switchleri - ON yap
+Işık yanmaya devam ediyorsa
+-FUEL BOOST PUMP CONTROL switchleri - OFF yap
+-Land as soon as practicable
+</li></ul></div>`,
     "#2 ENGINE OIL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Yağ Basıncı.</p><ul><li>Step1.</li></ul></div>`,
     "#2 ENGINE OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
     "CHIP #2 ENGINE": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Çapak Algılandı.</p><ul><li>Step1.</li></ul></div>`,
