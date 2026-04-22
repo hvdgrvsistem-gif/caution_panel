@@ -162,7 +162,8 @@ const prosedurler = {
     "#1 ENGINE OIL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Yağ Basıncı.</p><ul><li>Step1.</li></ul></div>`,
     "#1 ENGINE OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
     "CHIP #1 ENGINE": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Çapak Algılandı.</p><ul><li>Step1.</li></ul></div>`,
-    "#1 FUEL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Filtresi Bypass.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 FUEL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Filtresi Bypass.</p><ul><li>Etkilenen motorda ENG FUEL SYS - XFD.</li>Land as soon as practicable
+(ikisi birden giderse Land as soon as possible)<li>.</li></ul></div>`,
     "#1 ENGINE STARTER": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Marş Durumu.</p><ul><li>Step1.</li></ul></div>`,
     "#1 PRI SERVO PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Birincil Servo Basıncı.</p><ul><li>Step1.</li></ul></div>`,
     "TAIL ROTOR QUADRANT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Kuyruk Rotoru Quadrant Hatası.</p><ul><li>Step1.</li></ul></div>`,
@@ -178,7 +179,7 @@ const prosedurler = {
     "APU ACCUM LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> APU Akümülatör Basıncı Düşük.</p><ul><li>Step1.</li></ul></div>`,
 
     /* 2. SÜTUN */
-    "#1 GEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 GEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Hatası.</p><ul><li>Etkilenen GENERATOR switch RESET sonra ON.</li><li>Işık yanmaya devam ederse</li><li>Etkilenen GENERATOR switch OFF</li><li>EMER APU START</li><li>1# gen,2#gen,1# conv, 2 conv ve ac ess bus off uyarı ışığı yanıyorsa;</li><li>SAS 1 switch - OFF</li><li>Airspeed 80 Knot veya daha altına indir.</li><li>1# Gen ve 2# Gen switch RESET sonra ON yap.</li><li>Uyarı ışıkları yanmaya devam ederse:</li><li>Generatör switchleri OFF</li><li>EMER APU START</li><li>SAS 1 switch ON</li><li>Land as soon as practicable</li></ul></div>`,
     "#1 GEN BRG": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Rulman Hatası.</p><ul><li>Step1.</li></ul></div>`,
     "#1 CONV": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Konvertör Hatası.</p><ul><li>Step1.</li></ul></div>`,
     "AC ESS BUS OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> AC Temel Veri Yolu Kapalı.</p><ul><li>Step1.</li></ul></div>`,
@@ -201,7 +202,7 @@ const prosedurler = {
     "PARKING BRAKE ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Park Freni Çekili.</p><ul><li>Step1.</li></ul></div>`,
 
     /* 3. SÜTUN */
-    "#2 GEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Jeneratör Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 GEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Hatası.</p><ul><li>Etkilenen GENERATOR switch RESET sonra ON.</li><li>Işık yanmaya devam ederse</li><li>Etkilenen GENERATOR switch OFF</li><li>EMER APU START</li></ul></div>`,
     "#2 GEN BRG": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Jeneratör Rulman Hatası.</p><ul><li>Step1.</li></ul></div>`,
     "#2 CONV": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Konvertör Hatası.</p><ul><li>Step1.</li></ul></div>`,
     "DC ESS BUS OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> DC Temel Veri Yolu Kapalı.</p><ul><li>Step1.</li></ul></div>`,
