@@ -156,87 +156,96 @@
         mainView.appendChild(div);
     });
 const prosedurler = {
+    /* 1. SÜTUN */
+    "#1 FUEL LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Depo Yakıt Düşük.</p><ul><li>Step1.</li><li>Step2.</li></ul></div>`,
+    "#1 FUEL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Basıncı Düşük.</p><ul><li>Step1.</li><li>Step2.</li></ul></div>`,
+    "#1 ENGINE OIL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Yağ Basıncı.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 ENGINE OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
+    "CHIP #1 ENGINE": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Çapak Algılandı.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 FUEL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yakıt Filtresi Bypass.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 ENGINE STARTER": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Marş Durumu.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 PRI SERVO PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Birincil Servo Basıncı.</p><ul><li>Step1.</li></ul></div>`,
+    "TAIL ROTOR QUADRANT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Kuyruk Rotoru Quadrant Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "MAIN XMSN OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ana Şanzıman Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
+    "BOOST SERVO OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> Boost Servo Devre Dışı.</p><ul><li>Step1.</li></ul></div>`,
+    "LFT PITOT HEAT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Sol Pitot Isıtma Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "CHIP INPUT MDL-LH": `<div style="text-align:left;"><p><strong>DURUM:</strong> Sol Giriş Modülü Çapak.</p><ul><li>Step1.</li></ul></div>`,
+    "CHIP ACCESS MDL-LH": `<div style="text-align:left;"><p><strong>DURUM:</strong> Sol Aksesuar Modülü Çapak.</p><ul><li>Step1.</li></ul></div>`,
+    "MR DE-ICE FAIL": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ana Rotor Buz Önleme Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "MAIN XMSN OIL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ana Şanzıman Yağ Basıncı.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 ENG ANTI-ICE ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Buz Önleme Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "APU ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> APU Çalışıyor.</p><ul><li>Step1.</li></ul></div>`,
+    "APU ACCUM LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> APU Akümülatör Basıncı Düşük.</p><ul><li>Step1.</li></ul></div>`,
 
-"AUX FUEL": `
+    /* 2. SÜTUN */
+    "#1 GEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 GEN BRG": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Jeneratör Rulman Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 CONV": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Konvertör Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "AC ESS BUS OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> AC Temel Veri Yolu Kapalı.</p><ul><li>Step1.</li></ul></div>`,
+    "BATT LOW CHARGE": `<div style="text-align:left;"><p><strong>DURUM:</strong> Batarya Düşük Şarj.</p><ul><li>Step1.</li></ul></div>`,
+    "GUST LOCK": `<div style="text-align:left;"><p><strong>DURUM:</strong> Gust Lock Engajeli.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 OIL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Yağ Filtresi Bypass.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 HYD PUMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Hidrolik Pompa Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "IRCM INOP": `<div style="text-align:left;"><p><strong>DURUM:</strong> IRCM Devre Dışı.</p><ul><li>Step1.</li></ul></div>`,
+    "INT XMSN OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ara Şanzıman Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
+    "STABILATOR": `<div style="text-align:left;"><p><strong>DURUM:</strong> Stabilizatör Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "FLT PATH STAB": `<div style="text-align:left;"><p><strong>DURUM:</strong> Uçuş Yolu Stabilizasyonu.</p><ul><li>Step1.</li></ul></div>`,
+    "CHIP INT XMSN": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ara Şanzıman Çapak.</p><ul><li>Step1.</li></ul></div>`,
+    "CHIP MAIN MDL SUMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ana Modül Sump Çapak.</p><ul><li>Step1.</li></ul></div>`,
+    "MR DE-ICE FAULT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Ana Rotor Buz Önleme Arızası.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 RSVR LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Rezervuar Seviyesi Düşük.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 ENG INLET ANTI-ICE ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Motor Giriş Buz Önleme Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "APU GEN ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> APU Jeneratörü Devrede.</p><ul><li>Step1.</li></ul></div>`,
+    "SEARCH LT ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Arama Işığı Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "CARGO HOOK OPEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> Kargo Kancası Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "PARKING BRAKE ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Park Freni Çekili.</p><ul><li>Step1.</li></ul></div>`,
 
-<div style="text-align:left;">
-            
-<p><strong>DURUM:</strong> Yedek yakıt deposu devrede veya düşük seviyede.</p>
-            
-<ul>
-                
-<li>Transfer pompasını kontrol edin.</li>
-                
-<li>Ana depo seviyelerini izleyin.</li>
-                
-<li>Görev süresini yakıt durumuna göre yeniden planlayın.</li>
-            
-</ul>
-        
-</div>`,
-    
+    /* 3. SÜTUN */
+    "#2 GEN": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Jeneratör Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 GEN BRG": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Jeneratör Rulman Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 CONV": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Konvertör Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "DC ESS BUS OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> DC Temel Veri Yolu Kapalı.</p><ul><li>Step1.</li></ul></div>`,
+    "BATTERY FAULT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Batarya Arızası.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 OIL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Yağ Filtresi Bypass.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 HYD PUMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Hidrolik Pompa Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "AUX FUEL": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yedek Yakıt Durumu.</p><ul><li>Step1.</li></ul></div>`,
+    "TAIL XMSN OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> Kuyruk Şanzıman Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
+    "SAS OFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> SAS Kapalı.</p><ul><li>Step1.</li></ul></div>`,
+    "IFF": `<div style="text-align:left;"><p><strong>DURUM:</strong> IFF Arızası/Durumu.</p><ul><li>Step1.</li></ul></div>`,
+    "CHIP TAIL XMSN": `<div style="text-align:left;"><p><strong>DURUM:</strong> Kuyruk Şanzıman Çapak.</p><ul><li>Step1.</li></ul></div>`,
+    "APU FAIL": `<div style="text-align:left;"><p><strong>DURUM:</strong> APU Arızası.</p><ul><li>Step1.</li></ul></div>`,
+    "TR DE-ICE FAIL": `<div style="text-align:left;"><p><strong>DURUM:</strong> Kuyruk Rotoru Buz Önleme Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 RSVR LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Rezervuar Seviyesi Düşük.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 ENG INLET ANTI-ICE ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Giriş Buz Önleme Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "PRIME BOOST PUMP ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Prime Boost Pompa Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "LDG LT ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> İniş Işığı Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "HOOK ARMED": `<div style="text-align:left;"><p><strong>DURUM:</strong> Kanca Hazır (Armed).</p><ul><li>Step1.</li></ul></div>`,
+    "EXT PWR CONNECTED": `<div style="text-align:left;"><p><strong>DURUM:</strong> Harici Güç Bağlı.</p><ul><li>Step1.</li></ul></div>`,
 
+    /* 4. SÜTUN */
+    "#2 FUEL LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Depo Yakıt Düşük.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 FUEL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Yakıt Basıncı Düşük.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 ENGINE OIL PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Yağ Basıncı.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 ENGINE OIL TEMP": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Yağ Sıcaklığı.</p><ul><li>Step1.</li></ul></div>`,
+    "CHIP #2 ENGINE": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Çapak Algılandı.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 FUEL FLTR BYPASS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Yakıt Filtresi Bypass.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 ENGINE STARTER": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Marş Durumu.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 PRI SERVO PRESS": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Birincil Servo Basıncı.</p><ul><li>Step1.</li></ul></div>`,
+    "#1 TAIL RTR SERVO": `<div style="text-align:left;"><p><strong>DURUM:</strong> #1 Kuyruk Rotoru Servo Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "APU OIL TEMP HI": `<div style="text-align:left;"><p><strong>DURUM:</strong> APU Yağ Sıcaklığı Yüksek.</p><ul><li>Step1.</li></ul></div>`,
+    "TRIM FAIL": `<div style="text-align:left;"><p><strong>DURUM:</strong> Trim Arızası.</p><ul><li>Step1.</li></ul></div>`,
+    "RT PITOT HEAT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Sağ Pitot Isıtma Hatası.</p><ul><li>Step1.</li></ul></div>`,
+    "CHIP INPUT MDL-RH": `<div style="text-align:left;"><p><strong>DURUM:</strong> Sağ Giriş Modülü Çapak.</p><ul><li>Step1.</li></ul></div>`,
+    "CHIP ACCESS MDL-RH": `<div style="text-align:left;"><p><strong>DURUM:</strong> Sağ Aksesuar Modülü Çapak.</p><ul><li>Step1.</li></ul></div>`,
+    "ICE DETECTED": `<div style="text-align:left;"><p><strong>DURUM:</strong> Buzlanma Tespit Edildi.</p><ul><li>Step1.</li></ul></div>`,
+    "BACK-UP RSVR LOW": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yedek Rezervuar Seviyesi Düşük.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 ENG ANTI-ICE ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Motor Buz Önleme Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "BACK-UP PUMP ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yedek Pompa Çalışıyor.</p><ul><li>Step1.</li></ul></div>`,
+    "#2 TAIL RTR SERVO ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> #2 Kuyruk Rotoru Servo Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "AUX SRCHLT ON": `<div style="text-align:left;"><p><strong>DURUM:</strong> Yardımcı Arama Işığı Açık.</p><ul><li>Step1.</li></ul></div>`,
+    "HOIST ARMED": `<div style="text-align:left;"><p><strong>DURUM:</strong> Vinç (Hoist) Hazır.</p><ul><li>Step1.</li></ul></div>`,
 
-    "#2 FUEL LOW": `
-        
-<div style="text-align:left; color: #ff4444;">
-            
-<p><strong>UYARI:</strong> 2 Numaralı motor yakıt seviyesi kritik!</p>
-            
-<p><strong>YAPILACAKLAR:</strong></p>
-            
-<ol>
-                
-<li>X-FEED (Çapraz Besleme) valfini açın.</li>
-                
-<li>İniş planlamasını derhal başlatın.</li>
-                
-<li>Yakıt miktar göstergesini teyit edin.</li>
-            
-</ol>
-        
-</div>`,
-
-    "#1 TAIL RTR SERVO": `
-        
-<div style="text-align:left; color: #ff4444;">
-            
-<p><strong>UYARI:</strong> 1 Numaralı Tail Rotor Servo Fail!</p>
-            
-<p><strong>YAPILACAKLAR:</strong></p>
-            
-<ol>
-                
-<li>AIRSPEED - Adjust.</li>                
-<li>TAIL SERVO Switch - BACKUP konuma al.</li>                
-<li>BACKUP HYD PUMP switch - ON konuma getir.</li>
-<li>Land as soon as practicable.</li>
-            
-</ol>
-        
-</div>`,
-
-"GUST LOCK": `
-        
-<div style="text-align:left; color: #ff4444;">
-            
-<p><strong>UYARI:</strong> Gust Lock Devrede!</p>
-            
-<p><strong>YAPILACAKLAR:</strong></p>
-            
-<ol>
-                
-<li>Transmisyon altında bulunan Gust Lock kolunu çekin!</li>
-                
-<li>Pal dönüsünü kontrol edin.Palin dönmesi gerekir.</li>
-                         
-</ol>
-        
-</div>`,
-  
-  
-
-    "DEFAULT": "Bu sistem için standart operasyon prosedürü (SOP) henüz girilmemiştir."
+    "DEFAULT": `<div style="text-align:left;"><p><strong>DURUM:</strong> Bilgi Girilmedi.</p><ul><li>Lütfen prosedürü ekleyin.</li></ul></div>`
 };
 
     function openDetail(title) {
