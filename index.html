@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Caution Panel - All-in-One</title>
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --btn-bg: #ffffff;
+            --btn-text: #000000;
+            --accent: #ffcc00;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ANA PANEL GÖRÜNÜMÜ */
+        #main-view {
+            display: grid;
+            grid-template-columns: repeat(4, 85px); /* Mobilde sığması için küçültüldü */
+            gap: 5px;
+            padding: 10px;
+            border: 3px solid #333;
+            background: #000;
+        }
+
+        @media (min-width: 600px) {
+            #main-view { grid-template-columns: repeat(4, 160px); gap: 8px; }
+        }
+
+        .btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 9px;
+            cursor: pointer;
+            text-transform: uppercase;
+            border: 1px solid #666;
+        }
+
+        @media (min-width: 600px) { .btn { height: 55px; font-size: 11px; } }
+
+        .btn:active { background-color: var(--accent); }
+
+        .spacer { visibility: hidden; }
+        .separator { background: #000; border: none; position: relative; }
+        .separator::after { content: ""; position: absolute; width: 80%; height: 2px; background: white; }
+
+        /* DETAY SAYFASI GÖRÜNÜMÜ */
+        #detail-view {
+            display: none; /* Başlangıçta gizli */
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #1a1a1a;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #detail-title { color: var(--accent); font-size: 24px; margin-bottom: 20px; text-align: center; }
+        #detail-content { font-size: 18px; line-height: 1.6; max-width: 600px; }
+
+        .back-btn {
+            margin-top: auto;
+            padding: 15px 40px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-view"></div>
+
+    <div id="detail-view">
+        <h1 id="detail-title">BAŞLIK</h1>
+        <div id="detail-content">Bu buton için henüz bir açıklama girilmedi.</div>
+        <button class="back-btn" onclick="closeDetail()">GERİ DÖN</button>
+    </div>
+
+<script>
+    // TÜM BUTONLAR VE İÇERİKLERİ
+    // Buradaki "content" kısmını istediğiniz gibi doldurabilirsiniz (HTML destekler)
+    const data = [
+        { id: "fuel1", label: "#1 FUEL LOW", content: "<b>Acil Durum:</b> Yakıt seviyesi kritik seviyede! <br> Yakıt miktarını kontrol edin." },
+        { id: "gen1", label: "#1 GEN", content: "Jeneratör 1 hatası. Voltaj değerlerini kontrol edin." },
+        { id: "gen2", label: "#2 GEN", content: "Jeneratör 2 hatası." },
+        { id: "fuel2", label: "#2 FUEL LOW", content: "Yakıt seviyesi düşük." },
+        { id: "fpress1", label: "#1 FUEL PRESS", content: "Yakıt basıncı düşük!" },
+        { id: "gbrg1", label: "#1 GEN BRG", content: "Jeneratör rulman uyarısı." },
+        // ... Diğer tüm butonları bu şekilde buraya ekleyebilirsiniz.
+        // Kısa olması için bir kısmını otomatik ekleyelim:
+        { id: "sep", label: "SEPARATOR", type: "sep" }
+    ];
+
+    // Görseldeki tüm isimleri hızlıca diziye alalım (Test için)
+    const allLabels = [
+        "#1 FUEL LOW", "#1 GEN", "#2 GEN", "#2 FUEL LOW",
+        "#1 FUEL PRESS", "#1 GEN BRG", "#2 GEN BRG", "#2 FUEL PRESS",
+        "#1 ENGINE OIL PRESS", "#1 CONV", "#2 CONV", "#2 ENGINE OIL PRESS",
+        "#1 ENGINE OIL TEMP", "AC ESS BUS OFF", "DC ESS BUS OFF", "#2 ENGINE OIL TEMP",
+        "CHIP #1 ENGINE", "BATT LOW CHARGE", "BATTERY FAULT", "CHIP #2 ENGINE",
+        "#1 FUEL FLTR BYPASS", "GUST LOCK", "SEPARATOR", "#2 FUEL FLTR BYPASS",
+        "#1 ENGINE STARTER", "#1 OIL FLTR BYPASS", "#2 OIL FLTR BYPASS", "#2 ENGINE STARTER",
+        "#1 PRI SERVO PRESS", "#1 HYD PUMP", "#2 HYD PUMP", "#2 PRI SERVO PRESS",
+        "TAIL ROTOR QUADRANT", "IRCM INOP", "AUX FUEL", "#1 TAIL RTR SERVO",
+        "MAIN XMSN OIL TEMP", "INT XMSN OIL TEMP", "TAIL XMSN OIL TEMP", "APU OIL TEMP HI",
+        "BOOST SERVO OFF", "STABILATOR", "SAS OFF", "TRIM FAIL",
+        "LFT PITOT HEAT", "FLT PATH STAB", "IFF", "RT PITOT HEAT",
+        "CHIP INPUT MDL-LH", "CHIP INT XMSN", "CHIP TAIL XMSN", "CHIP INPUT MDL-RH",
+        "CHIP ACCESS MDL-LH", "CHIP MAIN MDL SUMP", "APU FAIL", "CHIP ACCESS MDL-RH",
+        "MR DE-ICE FAIL", "MR DE-ICE FAULT", "TR DE-ICE FAIL", "ICE DETECTED",
+        "MAIN XMSN OIL PRESS", "#1 RSVR LOW", "#2 RSVR LOW", "BACK-UP RSVR LOW",
+        "#1 ENG ANTI-ICE ON", "#1 ENG INLET ANTI-ICE ON", "#2 ENG INLET ANTI-ICE ON", "#2 ENG ANTI-ICE ON",
+        "APU ON", "APU GEN ON", "PRIME BOOST PUMP ON", "BACK-UP PUMP ON",
+        "APU ACCUM LOW", "SEARCH LT ON", "LDG LT ON", "#2 TAIL RTR SERVO ON",
+        "SPACER", "CARGO HOOK OPEN", "HOOK ARMED", "AUX SRCHLT ON",
+        "SPACER", "PARKING BRAKE ON", "EXT PWR CONNECTED", "HOIST ARMED"
+    ];
+
+    const mainView = document.getElementById('main-view');
+    const detailView = document.getElementById('detail-view');
+
+    allLabels.forEach(label => {
+        const div = document.createElement('div');
+        if (label === "SPACER") {
+            div.className = 'spacer';
+        } else if (label === "SEPARATOR") {
+            div.className = 'btn separator';
+        } else {
+            div.className = 'btn';
+            div.textContent = label;
+            div.onclick = () => openDetail(label);
+        }
+        mainView.appendChild(div);
+    });
+const prosedurler = {
+
+"AUX FUEL": `
+
+<div style="text-align:left;">
+            
+<p><strong>DURUM:</strong> Yedek yakıt deposu devrede veya düşük seviyede.</p>
+            
+<ul>
+                
+<li>Transfer pompasını kontrol edin.</li>
+                
+<li>Ana depo seviyelerini izleyin.</li>
+                
+<li>Görev süresini yakıt durumuna göre yeniden planlayın.</li>
+            
+</ul>
+        
+</div>`,
+    
+
+
+    "#2 FUEL LOW": `
+        
+<div style="text-align:left; color: #ff4444;">
+            
+<p><strong>UYARI:</strong> 2 Numaralı motor yakıt seviyesi kritik!</p>
+            
+<p><strong>YAPILACAKLAR:</strong></p>
+            
+<ol>
+                
+<li>X-FEED (Çapraz Besleme) valfini açın.</li>
+                
+<li>İniş planlamasını derhal başlatın.</li>
+                
+<li>Yakıt miktar göstergesini teyit edin.</li>
+            
+</ol>
+        
+</div>`,
+  
+
+"GUST LOCK": `
+        
+<div style="text-align:left; color: #ff4444;">
+            
+<p><strong>UYARI:</strong> Gust Lock Devrede!</p>
+            
+<p><strong>YAPILACAKLAR:</strong></p>
+            
+<ol>
+                
+<li>Transmisyon altında bulunan Gust Lock kolunu çekin!</li>
+                
+<li>Pal dönüsünü kontrol edin.Palin dönmesi gerekir.</li>
+                         
+</ol>
+        
+</div>`,
+  
+  
+
+    "DEFAULT": "Bu sistem için standart operasyon prosedürü (SOP) henüz girilmemiştir."
+};
+
+    function openDetail(title) {
+ 
+   const detailTitle = document.getElementById('detail-title');
+    
+const detailContent = document.getElementById('detail-content');
+
+    
+detailTitle.textContent = title;
+
+
+    // Eğer tıklanan butonun ismi prosedürler listesinde varsa onu göster, 
+
+    // yoksa varsayılan (DEFAULT) metni göster.
+    
+const icerik = prosedurler[title] || prosedurler["DEFAULT"];
+    
+detailContent.innerHTML = icerik;
+    
+
+    document.getElementById('main-view').style.display = 'none';
+    
+document.getElementById('detail-view').style.display = 'flex';
+}
+
+    function closeDetail() {
+        detailView.style.display = 'none';
+        mainView.style.display = 'grid';
+    }
+</script>
+</body>
+</html>
